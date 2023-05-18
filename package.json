@@ -1,0 +1,16 @@
+{
+  "name": "express-rest-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:bpedryc83/express-rest-api.git",
+  "author": "Bartlomiej Pedryc <b.pedryc@poczta.fm>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "nodemon": "^2.0.22",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
