@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../db');
 
 const messageOK = { message: 'ok' };
+const message404 = { message: 'The slot is already taken' };
 
 router.route('/seats/random').get((req, res) => {
   res.send(db.seats[(Math.floor(Math.random() * (db.length)))]);
@@ -20,8 +21,15 @@ router.route('/seats/:id').get((req, res) => {
 router.route('/seats').post((req, res) => {
   const randomKey = uuidv4();
   const { day, seat, client, email } = req.body;
-  db.seats.push({id: randomKey, day: day, seat: seat, client: client, email: email});
-  res.json(messageOK);
+  const isReserved = db.seats.find(item => (item.day == day && item.seat == seat));
+  console.log(isReserved);
+  if (!isReserved) {
+    db.seats.push({id: randomKey, day: day, seat: seat, client: client, email: email});
+    res.json(messageOK);
+  }
+  else {
+    res.status(404).json(message404);
+  }
 });
 
 router.route('/seats/:id').put((req, res) => {
