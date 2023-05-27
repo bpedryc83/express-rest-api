@@ -25,6 +25,7 @@ router.route('/seats').post((req, res) => {
   console.log(isReserved);
   if (!isReserved) {
     db.seats.push({id: randomKey, day: day, seat: seat, client: client, email: email});
+    req.io.emit('seatsUpdated', db.seats);
     res.json(messageOK);
   }
   else {
