@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 
 const message404 = { message: '404 not found' };
 
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://testing-user:eukaliptus@cluster0.a8mpj12.mongodb.net/db', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
