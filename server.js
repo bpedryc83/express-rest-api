@@ -26,7 +26,8 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 
 const message404 = { message: '404 not found' };
 
-mongoose.connect('mongodb+srv://testing-user:eukaliptus@cluster0.a8mpj12.mongodb.net/db', { useNewUrlParser: true });
+//mongoose.connect('mongodb+srv://testing-user:eukaliptus@cluster0.a8mpj12.mongodb.net/db', { useNewUrlParser: true });   //version for remote database and Replit
+mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });   // version for local database
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -51,3 +52,5 @@ app.get('*', (req, res) => {
 app.use((req, res) => {
   res.status(404).json(message404);
 });
+
+module.exports = server;
