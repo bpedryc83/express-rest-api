@@ -28,9 +28,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 
 const message404 = { message: '404 not found' };
 
-const dbAddress = process.env.NODE_ENV === 'production' ?
-  (`mongodb+srv://testing-user:${mySecret}@cluster0.a8mpj12.mongodb.net/db`) :
-  ('mongodb://localhost:27017/NewWaveDB');
+const dbAddress = `mongodb+srv://testing-user:${mySecret}@cluster0.a8mpj12.mongodb.net/db`;
 
 mongoose.connect(dbAddress, { useNewUrlParser: true });
 const db = mongoose.connection;
