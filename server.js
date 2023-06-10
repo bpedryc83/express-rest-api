@@ -32,8 +32,7 @@ const dbAddress = process.env.NODE_ENV === 'production' ?
   (`mongodb+srv://testing-user:${mySecret}@cluster0.a8mpj12.mongodb.net/db`) :
   ('mongodb://localhost:27017/NewWaveDB');
 
-mongoose.connect(dbAddress, { useNewUrlParser: true });   //version for remote database and Replit
-//mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });   // version for local database
+mongoose.connect(dbAddress, { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
